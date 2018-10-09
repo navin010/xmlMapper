@@ -1,0 +1,12 @@
+<root>
+    <one>
+        <alpha>al1</alpha>
+        <beta>be1</beta>
+    </one>
+    <one>
+        <alpha>al2</alpha>
+        <beta>be2</beta>
+    </one>
+    <two>b</two>
+    <three>c</three>
+</root>
