@@ -1,5 +1,5 @@
-<root>
-    <one>
+<root attribute="1">
+    <one flavour="cherry" color="Red">
         <alpha>al1</alpha>
         <beta>be1</beta>
     </one>

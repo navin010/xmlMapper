@@ -3,7 +3,7 @@ from lxml import etree
 #xpath_in = str(input("xpath: "))
 
 
-tree = etree.parse(r'C:\PyCharm\Projects\XMLMapperenv2\input.xml')
+tree = etree.parse(r'C:\PyCharm\Projects\xmlMapper\input.xml')
 
 print(etree.tostring(tree))     #print whole tree
 
@@ -27,6 +27,27 @@ for element in tree.iter("one"):        #iterate through tree and find tags with
 #tree_children = tree.getchildren()
 #print(tree_children)
 
-x = tree.xpath("/root/child::*")
-print(x)
+#x = tree.xpath("/root/child::*")
+#print(x)
+
+
+for record in tree.xpath("/root[@attribute='1']/child::*"):     #loops through child nodes and output child tags
+    tag = record.tag
+    #print(record.tag)
+    #print(record.attrib.keys())        #print attribute key values. attributes stored as dictionary with key=attribute value
+
+    if record.attrib.keys():            #if dictionary is not empty loop through and get the attributes and join them to the tag
+        for i in record.attrib.keys():
+            print(tag + "[@" + i + "]")
+    else:
+        print(record.tag)               #otherwise print the tag
+
+
+
+
+
+
+
+
+
 
