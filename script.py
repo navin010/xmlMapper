@@ -30,6 +30,7 @@ for element in tree.iter("one"):        #iterate through tree and find tags with
 #x = tree.xpath("/root/child::*")
 #print(x)
 
+attribute_list = ""
 
 for record in tree.xpath("/root[@attribute='1']/child::*"):     #loops through child nodes and output child tags
     tag = record.tag
@@ -38,7 +39,14 @@ for record in tree.xpath("/root[@attribute='1']/child::*"):     #loops through c
 
     if record.attrib.keys():            #if dictionary is not empty loop through and get the attributes and join them to the tag
         for i in record.attrib.keys():
-            print(tag + "[@" + i + "]")
+            attribute = "[@" + i + "]"
+            attribute_list = attribute_list + attribute     #concatonate sting with all values of
+
+            if attribute == attribute_list:
+                print(tag + attribute)
+            else:
+                print(tag + attribute_list)
+
     else:
         print(record.tag)               #otherwise print the tag
 
