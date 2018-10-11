@@ -49,16 +49,11 @@ raw_tree = etree.ElementTree(xml_root)
 nice_tree = collections.OrderedDict()
 
 for tag in xml_root.iter():
-    #print(tag)
-    #print(raw_tree.getpath(tag))
     path = re.sub('\[[0-9]+\]', '', raw_tree.getpath(tag))      #removes the [1] array values from the path
-    #print(path)
     if path not in nice_tree:
         nice_tree[path] = []
-        #print(nice_tree)
     if len(tag.keys()) > 0:
         nice_tree[path].extend(attrib for attrib in tag.keys() if attrib not in nice_tree[path])
-
 
 for path, attribs in nice_tree.items():
     print(path)
@@ -66,9 +61,12 @@ for path, attribs in nice_tree.items():
 
 
 query_in = str(input("xpath: "))
-query_in_formatted = re.sub('\[(.* ?)\]', '', query_in)         #remove attributes
+query_in_formatted = re.sub('\[(.*?)\]', '', query_in)         #remove attributes
 print(query_in)
 print(query_in_formatted)
+
+attributes = re.findall('\@(.*?)\=',query_in)           #extract attribute names
+print(attributes)
 
 for path, attribs in nice_tree.items():
     if query_in_formatted == path:
